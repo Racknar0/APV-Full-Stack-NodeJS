@@ -1,8 +1,11 @@
 import express from "express";
+import conectarDB from "./config/db.js";
 
 const app = express();
 
-app.use('/', (req , res) => {
+conectarDB();
+
+app.use('/', (req , res) => { 
     res.send('Test')
 })
 
