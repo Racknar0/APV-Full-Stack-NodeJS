@@ -10,7 +10,7 @@ const registrar = async (req, res) => {
         return res.status(400).json({msg: error.message})
     }
 
-    
+
     try {
         //Guardar un nuevo Veterinario
         const veterinario = new Veterinario(req.body);
@@ -31,5 +31,9 @@ const perfil = (req, res) => {
     res.json({ msg: 'Mostrando Perfil'})
 }
 
+const confirmar = (req, res) => {
+    console.log(req.params.token);
+    res.json({msg: 'Confirmando Cuenta'})
+}
 
-export { registrar, perfil }
+export { registrar, perfil, confirmar }
