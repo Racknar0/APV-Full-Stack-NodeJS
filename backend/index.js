@@ -9,7 +9,7 @@ dotenv.config();
 conectarDB(); //Funcion conectarDB
 
 
-app.use('/api/veternarios' ,veterinarioRoutes);
+app.use('/api/veterinarios' ,veterinarioRoutes);
 
 const PORT = process.env.PORT || 4000;
 
