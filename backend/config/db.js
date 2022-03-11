@@ -4,8 +4,7 @@ const conectarDB = async () => {
 
 try {
     
-    const db = await mongoose.connect(
-        'mongodb+srv://root:root@cluster0.dfzzo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
+    const db = await mongoose.connect(process.env.MONGO_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true
         }
