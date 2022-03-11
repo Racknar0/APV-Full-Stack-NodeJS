@@ -10,7 +10,7 @@ conectarDB(); //Funcion conectarDB
 
 app.use('/', (req , res) => { 
     res.send('Test')
-})
+});
 
 const PORT = process.env.PORT || 4000;
 
