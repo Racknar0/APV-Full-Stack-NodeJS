@@ -29,7 +29,11 @@ const registrar = async (req, res) => {
 };
 
 const perfil = (req, res) => {
-    res.json({ msg: 'Mostrando Perfil'})
+
+    const {veterinario} = req
+
+
+    res.json({ perfil: veterinario })
 }
 
 const confirmar = async (req, res) => {
@@ -83,4 +87,14 @@ const autenticar = async (req, res) => {
     }
 }
 
-export { registrar, perfil, confirmar, autenticar }
+const olvidePassword = (req, res) => {
+
+}
+const comprobarToken = (req, res) => {
+
+}
+const nuevoPassword = (req, res) => {
+
+}
+
+export { registrar, perfil, confirmar, autenticar, olvidePassword, comprobarToken, nuevoPassword }
