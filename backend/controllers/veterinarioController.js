@@ -1,7 +1,7 @@
 import Veterinario from "../models/Veterinario.js"
 
 const registrar = async (req, res) => {
-    const { email } = req.body 
+    const { email, password } = req.body 
 
     //Prevenir usuarios duplicados
     const existeUsuario = await Veterinario.findOne({email: email})
@@ -54,7 +54,7 @@ const confirmar = async (req, res) => {
 }
 
 const autenticar = async (req, res) => {
-    const { email } = req.body;
+    const { email, password } = req.body;
 
     // Comprobar que el usuario existe
     const usuario = await Veterinario.findOne({email})
@@ -70,6 +70,14 @@ const autenticar = async (req, res) => {
         return res.status(403).json({msg: error.message})
     }
     
+    // Revisar el password
+    if ( await usuario.comprobarPassword(password) ) {
+        //Autenticar
+       
+    } else {
+        const error = new Error('EL password es incorrecto')
+        return res.status(403).json({msg: error.message})
+    }
 }
 
 export { registrar, perfil, confirmar, autenticar }
