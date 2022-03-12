@@ -13,15 +13,22 @@ const pacientesSchema = mongoose.Schema({
         type: String,
         req: true,
     },
-    fecha: {
+    nombre: {
         type: Date,
         req: true,
     },
-    email: {
+    nombre: {
         type: String,
         req: true,
     },
     veterinario: {
-        type: mongoose.Schema.Types.ObjectId
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Veterinario'
     }
-})
+}, {
+    timestamps: true
+});
+
+const Paciente = mongoose.model('Paciente', pacientesSchema)
+
+export default Paciente

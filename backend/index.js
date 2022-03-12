@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv"; //Dot ENV para leer variable de entorno
 import conectarDB from "./config/db.js";
 import veterinarioRoutes from "./routes/veterinarioRoutes.js"
+import pacienteRoutes from "./routes/pacienteRoutes.js"
 
 const app = express();
 
@@ -13,6 +14,7 @@ conectarDB(); //Funcion conectarDB
 
 
 app.use('/api/veterinarios' ,veterinarioRoutes);
+app.use('/api/pacientes' ,pacienteRoutes);
 
 const PORT = process.env.PORT || 4000;
 
