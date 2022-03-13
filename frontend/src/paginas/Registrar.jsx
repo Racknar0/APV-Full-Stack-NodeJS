@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios' //Librería para comunicar
+import Alerta from '../components/Alerta'
 
 const Registrar = () => {
 
@@ -8,25 +10,47 @@ const Registrar = () => {
     const [ password, setPassword ] = useState('')
     const [ repetirPassword, setRepetirPassword ] = useState('')
 
-    const handleSubmit = e => {
+    const [alerta, setAlerta] = useState('')
+
+    const handleSubmit = async e => {
         e.preventDefault();
 
         if([nombre, email, password ,repetirPassword].includes('')) {
-            console.log('Hay campos vacíos');
+            setAlerta({ msg: 'Hay campos vacíos' , error: true });
             return;
         }
 
         if( password !== repetirPassword ) {
-            console.log('Los password no son iguales');
+            setAlerta({ msg: 'Los password no son iguales' , error: true });
             return;
         }
 
         if( password.length < 6) {
-            console.log('el password es muy corto, agrega mínimo 6 caracteres');
+            setAlerta({ msg: 'el password es muy corto, agrega mínimo 6 caracteres' , error: true });
         }
         
+        setAlerta({})
         
+        // Crear Usuario en la API
+        try {
+
+            const url = 'http://localhost:4000/api/veterinarios'
+            await axios.post(url, { nombre, email, password })
+            setAlerta({
+                msg: 'Creado Correctamente, revisa tu email',
+                error: false
+            })
+
+        } catch (error) {
+            setAlerta({ 
+            msg: error.response.data.msg ,
+            error: true
+        })
+        }
+
     }
+
+    const { msg } = alerta
 
     return (
         <>
@@ -38,6 +62,11 @@ const Registrar = () => {
             </div>
 
             <div className='mt-20 md:mt-5 shadow-lg px-5 py-10 rounded-xl bg-white'>
+
+                { msg && <Alerta 
+                    alerta={alerta}
+                /> }
+
                 <form 
                 onSubmit={handleSubmit}
                 >
