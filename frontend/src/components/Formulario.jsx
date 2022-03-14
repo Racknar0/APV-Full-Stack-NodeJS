@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
 import Alerta from './Alerta'
+import usePacientes from '../hooks/usePacientes'
 
 const Formulario = () => {
 
@@ -11,6 +12,9 @@ const Formulario = () => {
     const [sintomas, setSintomas] = useState('')
 
     const [alerta, setAlerta] = useState({})
+
+    const { pacientes } = usePacientes()
+    console.log(pacientes);
 
     const handleSubmit = e => {
         e.preventDefault()
