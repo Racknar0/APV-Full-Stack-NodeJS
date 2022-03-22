@@ -30,5 +30,5 @@ Herramientas Utilizadas para el desarrollo de este proyecto:
       height="100" /> </a>
 
 -  Visualización :-
-<a href="https://agile-river-91298.herokuapp.com/" target="_blank"
-    rel="noreferrer">https://agile-river-91298.herokuapp.com/</a>
+<a href="https://mern-apv.netlify.app/" target="_blank"
+    rel="noreferrer">https://mern-apv.netlify.app/</a>
